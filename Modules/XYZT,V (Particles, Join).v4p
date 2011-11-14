@@ -1,0 +1,57 @@
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta26.dtd" >
+   <PATCH nodename="C:\kimchiandchips\VVVV.Research\Particles\modules\XYZT,V (Particles, Join).v4p" filename="C:\kimchiandchips\VVVV.Research\Particles\Modules\XYZT,V (Particles, Split).v4p" systemname="XYZT,V (Particles, Split)">
+   <BOUNDS height="2730" left="5730" top="5265" type="Window" width="2865">
+   </BOUNDS>
+   <NODE componentmode="InABox" id="0" nodename="IOBox (Node)" systemname="IOBox (Node)">
+   <BOUNDS height="100" left="285" top="1455" type="Node" width="100">
+   </BOUNDS>
+   <BOUNDS height="240" left="285" top="1455" type="Box" width="795">
+   </BOUNDS>
+   <PIN encoded="0" pinname="Descriptive Name" slicecount="1" values="|XYZT,V|">
+   </PIN>
+   <PIN pinname="Output Node" visible="1">
+   </PIN>
+   <PIN pinname="Input Node" visible="1">
+   </PIN>
+   </NODE>
+   <NODE componentmode="InABox" id="1" nodename="IOBox (Node)" systemname="IOBox (Node)">
+   <BOUNDS height="100" left="270" top="255" type="Node" width="100">
+   </BOUNDS>
+   <BOUNDS height="240" left="270" top="255" type="Box" width="795">
+   </BOUNDS>
+   <PIN encoded="0" pinname="Descriptive Name" slicecount="1" values="XYZT">
+   </PIN>
+   <PIN pinname="Input Node" slicecount="1" visible="1" values="||">
+   </PIN>
+   <PIN pinname="Output Node" visible="1">
+   </PIN>
+   </NODE>
+   <NODE componentmode="InABox" id="2" nodename="IOBox (Node)" systemname="IOBox (Node)">
+   <BOUNDS height="100" left="1305" top="255" type="Node" width="100">
+   </BOUNDS>
+   <BOUNDS height="240" left="1305" top="255" type="Box" width="795">
+   </BOUNDS>
+   <PIN encoded="0" pinname="Descriptive Name" slicecount="1" values="Velocity">
+   </PIN>
+   <PIN pinname="Input Node" slicecount="1" visible="1" values="||">
+   </PIN>
+   <PIN pinname="Output Node" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="Cons (EX9.Texture)" nodename="Cons (EX9.Texture)" componentmode="Hidden" id="5">
+   <BOUNDS type="Node" left="270" top="870" width="1080" height="270">
+   </BOUNDS>
+   <PIN pinname="Texture In 1" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Texture In 2" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Texture Out" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="1" srcpinname="Output Node" dstnodeid="5" dstpinname="Texture In 1">
+   </LINK>
+   <LINK srcnodeid="2" srcpinname="Output Node" dstnodeid="5" dstpinname="Texture In 2">
+   </LINK>
+   <LINK srcnodeid="5" srcpinname="Texture Out" dstnodeid="0" dstpinname="Input Node">
+   </LINK>
+   </PATCH>
