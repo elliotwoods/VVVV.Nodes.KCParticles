@@ -41,7 +41,7 @@ vs2ps VS(
 
     //transform position
 	PosO.xy *= 2;
-    Out.Pos = PosO;
+    Out.Pos = mul(PosO, tW);
     
     //transform texturecoordinates
     Out.TexCd = TexCd;
@@ -55,11 +55,14 @@ vs2ps VS(
 
 float InputMin = -1.0f;
 float InputMax = 1.0f;
+float DeadZone = 0.0f;
+
 float4 PS(vs2ps In): COLOR
 {
     float4 col = tex2D(Samp, In.TexCd);
 	col -= InputMin;
 	col /= InputMax - InputMin;
+	col *= abs(col) > DeadZone;
     return col;
 }
 

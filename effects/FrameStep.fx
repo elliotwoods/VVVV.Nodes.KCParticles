@@ -70,7 +70,7 @@ struct XYZTV
 
 float dt;
 
-XYZTV PS(vs2ps In)
+XYZTV PSHarmonic(vs2ps In)
 {
 	XYZTV state;
 	state.xyzt = tex2D(SampX, In.TexCd);
@@ -81,16 +81,38 @@ XYZTV PS(vs2ps In)
 	return state;
 }
 
+float Gravity = 1.0;
+XYZTV PSGravity(vs2ps In)
+{
+	XYZTV state;
+	state.xyzt = tex2D(SampX, In.TexCd);
+	state.v = tex2D(SampV, In.TexCd);
+
+	state.xyzt.xyz += state.v.xyz * dt;
+	state.v.y -= Gravity * dt;
+	return state;
+}
+
 // --------------------------------------------------------------------------------------------------
 // TECHNIQUES:
 // --------------------------------------------------------------------------------------------------
 
-technique TScaled
+technique THarmonic
 {
     pass P0
     {
         //Wrap0 = U;  // useful when mesh is round like a sphere
         VertexShader = compile vs_2_0 VS();
-        PixelShader  = compile ps_2_0 PS();
+        PixelShader  = compile ps_2_0 PSHarmonic();
+    }
+}
+
+technique TGravity
+{
+    pass P0
+    {
+        //Wrap0 = U;  // useful when mesh is round like a sphere
+        VertexShader = compile vs_2_0 VS();
+        PixelShader  = compile ps_2_0 PSGravity();
     }
 }
