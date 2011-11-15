@@ -66,7 +66,7 @@ float4 PS(vs2ps In): COLOR
 // TECHNIQUES:
 // --------------------------------------------------------------------------------------------------
 
-technique TScaled
+technique TMesh
 {
     pass P0
     {
@@ -74,4 +74,14 @@ technique TScaled
         VertexShader = compile vs_3_0 VS();
         PixelShader  = compile ps_3_0 PS();
     }
+}
+
+technique TPoint
+{
+	pass P1
+	{
+		FillMode = POINT;
+		VertexShader = compile vs_3_0 VS();
+        PixelShader  = compile ps_3_0 PS();
+	}
 }

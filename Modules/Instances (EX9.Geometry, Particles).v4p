@@ -1,6 +1,6 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta26.dtd" >
-   <PATCH nodename="C:\kimchiandchips\VVVV.Research\Particles\modules\Instances (EX9.Geometry, Particles).v4p" filename="C:\kimchiandchips\VVVV.Research\Particles\Modules\Instances (EX9.Geometry, Particles).v4p" systemname="Instances (EX9.Geometry, Particles)">
-   <BOUNDS height="15600" left="11235" top="0" type="Window" width="11190">
+   <PATCH nodename="C:\kimchiandchips\VVVV.Research\VVVV.Nodes.KCParticles\modules\Instances (EX9.Geometry, Particles).v4p" filename="C:\kimchiandchips\VVVV.Research\Particles\Modules\Instances (EX9.Geometry, Particles).v4p" systemname="Instances (EX9.Geometry, Particles)">
+   <BOUNDS height="13890" left="17835" top="750" type="Window" width="11190">
    </BOUNDS>
    <NODE componentmode="Hidden" hiddenwhenlocked="0" id="3" managers="" nodename="Mesh (EX9.Geometry Split)" systemname="Mesh (EX9.Geometry Split)">
    <PIN pinname="Mesh" pintype="Input" slicecount="1" visible="1" values="||">
@@ -160,12 +160,10 @@
    <PIN encoded="0" pinname="Descriptive Name" slicecount="1" values="Mesh">
    </PIN>
    </NODE>
-   <LINK dstnodeid="5" dstpinname="Input Node" srcnodeid="0" srcpinname="Mesh">
-   </LINK>
    <NODE componentmode="InABox" id="6" nodename="IOBox (Value Advanced)" systemname="IOBox (Value Advanced)">
-   <BOUNDS height="100" left="5445" top="240" type="Node" width="100">
+   <BOUNDS height="100" left="6000" top="240" type="Node" width="100">
    </BOUNDS>
-   <BOUNDS height="240" left="5445" top="240" type="Box" width="795">
+   <BOUNDS height="240" left="6000" top="240" type="Box" width="795">
    </BOUNDS>
    <PIN pinname="Value Type" slicecount="1" values="Integer">
    </PIN>
@@ -186,8 +184,6 @@
    <PIN pinname="Output" visible="1">
    </PIN>
    </NODE>
-   <LINK dstnodeid="7" dstpinname="Spread Count" srcnodeid="6" srcpinname="Y Output Value">
-   </LINK>
    <NODE componentmode="Hidden" id="8" nodename="Cross (2d)" systemname="Cross (2d)">
    <BOUNDS height="100" left="4500" top="3285" type="Node" width="100">
    </BOUNDS>
@@ -378,8 +374,6 @@
    <PIN pinname="Input 2" visible="1">
    </PIN>
    </NODE>
-   <LINK dstnodeid="0" dstpinname="Indices" srcnodeid="24" srcpinname="Output">
-   </LINK>
    <NODE componentmode="Hidden" id="25" nodename="Multiply (Value)" systemname="Multiply (Value)">
    <BOUNDS height="270" left="7680" top="7185" type="Node" width="2595">
    </BOUNDS>
@@ -490,22 +484,110 @@
    <LINKPOINT x="8220" y="4703">
    </LINKPOINT>
    </LINK>
-   <NODE systemname="Change (EX9.Geometry Mesh)" nodename="Change (EX9.Geometry Mesh)" componentmode="Hidden" id="32" hiddenwhenlocked="1">
-   <BOUNDS type="Node" left="3720" top="1155" width="100" height="100">
+   <NODE componentmode="Hidden" hiddenwhenlocked="1" id="32" nodename="Change (EX9.Geometry Mesh)" systemname="Change (EX9.Geometry Mesh)">
+   <BOUNDS height="100" left="3720" top="1155" type="Node" width="100">
    </BOUNDS>
    <PIN pinname="Mesh" visible="1">
    </PIN>
    <PIN pinname="OnChange" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="4" srcpinname="Output Node" dstnodeid="32" dstpinname="Mesh" linkstyle="VHV">
+   <LINK dstnodeid="32" dstpinname="Mesh" linkstyle="VHV" srcnodeid="4" srcpinname="Output Node" hiddenwhenlocked="1">
    <LINKPOINT x="780" y="818">
    </LINKPOINT>
    <LINKPOINT x="3720" y="818">
    </LINKPOINT>
    </LINK>
-   <LINK srcnodeid="32" srcpinname="OnChange" dstnodeid="1" dstpinname="Apply" hiddenwhenlocked="1">
+   <NODE systemname="Switch (Value Input)" nodename="Switch (Value Input)" componentmode="Hidden" id="33">
+   <BOUNDS type="Node" left="5460" top="2235" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   <PIN pinname="Input 2" visible="1">
+   </PIN>
+   <PIN pinname="Switch" visible="1">
+   </PIN>
+   <PIN pinname="Input 1" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="33" srcpinname="Output" dstnodeid="7" dstpinname="Spread Count">
    </LINK>
-   <LINK srcnodeid="32" srcpinname="OnChange" dstnodeid="0" dstpinname="Apply" hiddenwhenlocked="1">
+   <LINK srcnodeid="6" srcpinname="Y Output Value" dstnodeid="33" dstpinname="Input 2">
+   </LINK>
+   <LINK srcnodeid="0" srcpinname="Mesh" dstnodeid="5" dstpinname="Input Node">
+   </LINK>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="35" systemname="IOBox (String)">
+   <BOUNDS type="Node" left="2505" top="11520" width="540" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="2505" top="11520" width="540" height="270">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="geom" encoded="0">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE systemname="S+H (Animation)" nodename="S+H (Animation)" componentmode="Hidden" id="38" hiddenwhenlocked="1">
+   <BOUNDS type="Node" left="2235" top="9435" width="1545" height="270">
+   </BOUNDS>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   <PIN pinname="Set" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="38" srcpinname="Output" dstnodeid="0" dstpinname="Indices">
+   </LINK>
+   <LINK srcnodeid="24" srcpinname="Output" dstnodeid="38" dstpinname="Input">
+   </LINK>
+   <NODE systemname="Change (Animation)" nodename="Change (Animation)" componentmode="Hidden" id="39" hiddenwhenlocked="1">
+   <BOUNDS type="Node" left="4575" top="1155" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="OnChange" visible="1">
+   </PIN>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="OR (Boolean)" nodename="OR (Boolean)" componentmode="Hidden" id="40" hiddenwhenlocked="1">
+   <BOUNDS type="Node" left="3720" top="1590" width="900" height="270">
+   </BOUNDS>
+   <PIN pinname="Input 1" visible="1">
+   </PIN>
+   <PIN pinname="Input 2" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="32" srcpinname="OnChange" dstnodeid="40" dstpinname="Input 1" hiddenwhenlocked="1">
+   </LINK>
+   <LINK srcnodeid="39" srcpinname="OnChange" dstnodeid="40" dstpinname="Input 2" hiddenwhenlocked="1">
+   </LINK>
+   <LINK srcnodeid="6" srcpinname="Y Output Value" dstnodeid="39" dstpinname="Input" linkstyle="VHV" hiddenwhenlocked="1">
+   <LINKPOINT x="6000" y="795">
+   </LINKPOINT>
+   <LINKPOINT x="4635" y="795">
+   </LINKPOINT>
+   </LINK>
+   <LINK srcnodeid="40" srcpinname="Output" dstnodeid="33" dstpinname="Switch" linkstyle="VHV" hiddenwhenlocked="1">
+   <LINKPOINT x="3780" y="2033">
+   </LINKPOINT>
+   <LINKPOINT x="5460" y="2033">
+   </LINKPOINT>
+   </LINK>
+   <LINK srcnodeid="40" srcpinname="Output" dstnodeid="1" dstpinname="Apply" hiddenwhenlocked="1">
+   </LINK>
+   <LINK srcnodeid="40" srcpinname="Output" dstnodeid="38" dstpinname="Set" hiddenwhenlocked="1">
+   </LINK>
+   <LINK srcnodeid="40" srcpinname="Output" dstnodeid="0" dstpinname="Apply" hiddenwhenlocked="1">
+   </LINK>
+   <LINK srcnodeid="6" srcpinname="Y Output Value" dstnodeid="33" dstpinname="Input 1" linkstyle="VHV">
+   <LINKPOINT x="6015" y="1358">
+   </LINKPOINT>
+   <LINKPOINT x="5775" y="1358">
+   </LINKPOINT>
    </LINK>
    </PATCH>
